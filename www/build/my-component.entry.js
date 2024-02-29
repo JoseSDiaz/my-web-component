@@ -44,7 +44,7 @@ const MyCarousel = class {
     }
     render() {
         const visibleItems = this.getVisibleItems();
-        return (h(Host, { key: 'd6e2c33da5052fc60cbfc942ae2e4d439dbee58e' }, h("div", { key: '83db1b52b609873b48ef2fd5b2e4e0eee4c762ef', class: "carousel-container" }, h("button", { key: '453db2f8cc448e81576c69ef70765d79b3c38e79', class: "prev-button", onClick: () => this.prevItem() }, "\u2190"), visibleItems.map(item => (h("div", { class: "carousel-item" }, h("div", { class: "image-container" }, h("img", { src: item.image.url, alt: "image-content" }), h("div", { class: "image-text" }, item.tiers[0].awardLong))))), h("button", { key: 'c2d0c3b101ddff1ca96778bc743fed6776f3406a', class: "next-button", onClick: () => this.nextItem() }, "\u2192"))));
+        return (h(Host, { key: 'cfa7f22cebf7e19f51c5b1d6bd2325f1d2f353f0' }, h("div", { key: 'dd0fdb28ef54cbb6afbe5675ed444de867349546', class: "carousel-container" }, h("button", { key: '5b9e611672653bad70b3593e2a4de6fdbb5faffb', class: "prev-button", onClick: () => this.prevItem() }, "\u2190"), visibleItems.map(item => (h("div", { class: "carousel-item" }, h("div", { class: "image-container" }, h("img", { src: item.image.url, alt: "image-content" }), h("div", { class: "image-text" }, item.tiers[0].awardLong))))), h("button", { key: '0d72d226e07dc5ce149af3fec84703421efc7520', class: "next-button", onClick: () => this.nextItem() }, "\u2192"))));
     }
     get el() { return getElement(this); }
 };
