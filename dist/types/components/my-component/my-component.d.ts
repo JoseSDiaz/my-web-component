@@ -1,5 +1,6 @@
 export declare class MyCarousel {
     el: HTMLElement;
+    apiUrl: string;
     items: {
         image: {
             url: string;
@@ -10,6 +11,7 @@ export declare class MyCarousel {
         text: string;
     }[];
     currentIndex: number;
+    errorMessage: string;
     componentWillLoad(): Promise<void>;
     nextItem(): void;
     prevItem(): void;

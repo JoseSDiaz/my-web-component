@@ -1,4 +1,4 @@
-import { Component, State, h, Host, Element } from '@stencil/core';
+import { Component, State, h, Host, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'my-component',
@@ -8,11 +8,13 @@ import { Component, State, h, Host, Element } from '@stencil/core';
 export class MyCarousel {
   @Element() el: HTMLElement;
 
+  @Prop() apiUrl: string; // new prop
+
   @State() items: { image: { url: string }; tiers: { awardLong: string }; text: string }[] = [];
   @State() currentIndex: number = 0;
+  @State() errorMessage: string = ''; // here we define the message that we want to show
 
   async componentWillLoad() {
-    const apiUrl = 'http://localhost:8080/api/proxy';
     const options: RequestInit = {
       method: 'GET',
       headers: {
@@ -20,15 +22,19 @@ export class MyCarousel {
       },
     };
     try {
-      const response = await fetch(apiUrl, options);
+      const response = await fetch(this.apiUrl, options);
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Response was not ok or api url must be wrong..');
       }
       const data = await response.json();
-      this.items = data.offers;
-      console.log(this.items);
+      if (data.offers && data.offers.length > 0) {
+        this.items = data.offers;
+      } else {
+        this.errorMessage = 'No offers found';
+      }
     } catch (error) {
       console.error('Could not load data:', error);
+      this.errorMessage = error.message;
     }
   }
 
@@ -53,20 +59,28 @@ export class MyCarousel {
     return (
       <Host>
         <div class="carousel-container">
-          <button class="prev-button" onClick={() => this.prevItem()}>
-            &#8592;
-          </button>
-          {visibleItems.map(item => (
-            <div class="carousel-item">
-              <div class="image-container">
-                <img src={item.image.url} alt="image-content" />
-                <div class="image-text">{item.tiers[0].awardLong}</div>
+          {this.errorMessage === '' && (
+            <button class="prev-button" onClick={() => this.prevItem()}>
+              &#8592;
+            </button>
+          )}
+          {this.errorMessage ? (
+            <div class="error-message">{this.errorMessage}</div>
+          ) : (
+            visibleItems.map(item => (
+              <div class="carousel-item">
+                <div class="image-container">
+                  <img src={item.image.url} alt="image-content" />
+                  <div class="image-text">{item.tiers[0]?.awardLong || 'No tier info'}</div>
+                </div>
               </div>
-            </div>
-          ))}
-          <button class="next-button" onClick={() => this.nextItem()}>
-            &#8594;
-          </button>
+            ))
+          )}
+          {this.errorMessage === '' && (
+            <button class="next-button" onClick={() => this.nextItem()}>
+              &#8594;
+            </button>
+          )}
         </div>
       </Host>
     );

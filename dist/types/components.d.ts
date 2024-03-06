@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 export namespace Components {
     interface MyComponent {
+        "apiUrl": string;
     }
 }
 declare global {
@@ -22,6 +23,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface MyComponent {
+        "apiUrl"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
