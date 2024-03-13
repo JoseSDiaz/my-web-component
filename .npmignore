@@ -1,0 +1,11 @@
+"files": [
+  "dist/collection",
+  "dist/components/**/*.d.ts",
+  "dist/esm",
+  "dist/cjs",
+  "dist/loader",
+  "dist/index.js",
+  "dist/index.mjs"
+  readme.md
+  LICENSE.TXT
+],
