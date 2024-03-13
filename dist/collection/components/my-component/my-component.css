@@ -1,0 +1,48 @@
+/* my-component.css */
+:host {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+.carousel-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-items {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-item {
+  flex: none;
+  width: calc(100% / 5); /* Ajusta según cuántos ítems quieres mostrar a la vez */
+  text-align: center; /* Asegura que el texto esté centrado */
+}
+
+.image-container {
+  position: relative;
+  text-align: center;
+}
+
+.carousel-item img {
+  width: 100%; /* Asegúrate de que las imágenes se escalen correctamente */
+  display: block;
+}
+
+.image-text {
+  position: relative;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Hace que el ancho del texto coincida con el de la imagen */
+  height: 150px; /* Altura fija para el texto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
