@@ -1,6 +1,6 @@
 {
   "name": "carrousel-tester",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -15,7 +15,11 @@
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
   },
   "files": [
-    "dist/"
+    "dist/my-web-component/index.esm.js",
+    "dist/my-web-component/my-web-component.esm.js",
+    "dist/my-web-component/p-c71b9504.js",
+    "dist/my-web-component/p-d03eb4a4.entry.js",
+    "dist/my-web-component/p-e1255160.js"
   ],
   "scripts": {
     "build": "stencil build",
