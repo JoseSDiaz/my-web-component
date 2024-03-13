@@ -1,3 +1,10 @@
-<!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <link rel="modulepreload" href="/build/p-c71b9504.js"><script type="module" data-stencil data-resources-url="/build/" data-stencil-namespace="my-web-component">import{p as r,b as e}from"/build/p-c71b9504.js";export{s as setNonce}from"/build/p-c71b9504.js";import{g as t}from"/build/p-e1255160.js";const o=()=>{const e=import.meta.url;const s={};if(e!==""){s.resourcesUrl=new URL(".",e).href}return r(s)};o().then((async r=>{await t();return e([["p-d03eb4a4",[[1,"my-component",{apiUrl:[1,"api-url"],items:[32],currentIndex:[32],errorMessage:[32]}]]]],r)}));
-//# sourceMappingURL=my-web-component.esm.js.map
-</script> <script nomodule="" src="/build/my-web-component.js" data-stencil></script> </head> <body> <my-component api-url="http://localhost:8080/api/proxy"></my-component> </body></html>
+<!doctype html><html dir="ltr" lang="en"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Stencil Component Starter</title> <script type="module" src="/build/my-web-component.esm.js" data-stencil></script> <script nomodule="" src="/build/my-web-component.js" data-stencil></script> </head> <body> <my-component api-url="http://localhost:8080/api/proxy"></my-component> <script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  // auto-unregister service worker during dev mode
+  navigator.serviceWorker.getRegistration().then(function(registration) {
+    if (registration) {
+      registration.unregister().then(function() { location.reload(true) });
+    }
+  });
+}
+</script></body></html>

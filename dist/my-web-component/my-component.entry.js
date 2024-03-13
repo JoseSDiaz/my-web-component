@@ -1,6 +1,10 @@
-import { h, Host } from "@stencil/core";
-export class MyCarousel {
-    constructor() {
+import { r as registerInstance, h, a as Host, g as getElement } from './index-02eac31b.js';
+
+const myComponentCss = ":host{display:block;width:90%;margin:0 auto}.carousel-container{position:relative;width:100%;display:flex;align-items:center;justify-content:center}.carousel-items{display:flex;overflow:hidden;width:100%}.carousel-item{flex:none;width:calc(100% / 5);text-align:center;}.image-container{position:relative;text-align:center}.carousel-item img{width:100%;display:block}.image-text{position:relative;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:150px;display:flex;justify-content:center;align-items:center;overflow:hidden}";
+
+const MyCarousel = class {
+    constructor(hostRef) {
+        registerInstance(this, hostRef);
         this.apiUrl = undefined;
         this.items = [];
         this.currentIndex = 0;
@@ -51,46 +55,10 @@ export class MyCarousel {
             return (h("div", { class: "carousel-item" }, h("div", { class: "image-container" }, h("img", { src: item.image.url, alt: "image-content" }), h("div", { class: "image-text" }, ((_a = item.tiers[0]) === null || _a === void 0 ? void 0 : _a.awardLong) || 'No tier info'))));
         })), this.errorMessage === '' && (h("button", { class: "next-button", onClick: () => this.nextItem() }, "\u2192")))));
     }
-    static get is() { return "my-component"; }
-    static get encapsulation() { return "shadow"; }
-    static get originalStyleUrls() {
-        return {
-            "$": ["my-component.css"]
-        };
-    }
-    static get styleUrls() {
-        return {
-            "$": ["my-component.css"]
-        };
-    }
-    static get properties() {
-        return {
-            "apiUrl": {
-                "type": "string",
-                "mutable": false,
-                "complexType": {
-                    "original": "string",
-                    "resolved": "string",
-                    "references": {}
-                },
-                "required": false,
-                "optional": false,
-                "docs": {
-                    "tags": [],
-                    "text": ""
-                },
-                "attribute": "api-url",
-                "reflect": false
-            }
-        };
-    }
-    static get states() {
-        return {
-            "items": {},
-            "currentIndex": {},
-            "errorMessage": {}
-        };
-    }
-    static get elementRef() { return "el"; }
-}
-//# sourceMappingURL=my-component.js.map
+    get el() { return getElement(this); }
+};
+MyCarousel.style = myComponentCss;
+
+export { MyCarousel as my_component };
+
+//# sourceMappingURL=my-component.entry.js.map
